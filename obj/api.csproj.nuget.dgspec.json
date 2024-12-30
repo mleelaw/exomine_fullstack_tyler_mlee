@@ -1,25 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api\\api.csproj": {}
+    "C:\\Users\\tyler\\workspace\\csharp\\exomine_fullstack_tyler_mlee\\api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api\\api.csproj": {
+    "C:\\Users\\tyler\\workspace\\csharp\\exomine_fullstack_tyler_mlee\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api\\api.csproj",
+        "projectUniqueName": "C:\\Users\\tyler\\workspace\\csharp\\exomine_fullstack_tyler_mlee\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api\\api.csproj",
-        "packagesPath": "C:\\Users\\mleel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api\\obj\\",
+        "projectPath": "C:\\Users\\tyler\\workspace\\csharp\\exomine_fullstack_tyler_mlee\\api.csproj",
+        "packagesPath": "C:\\Users\\tyler\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tyler\\workspace\\csharp\\exomine_fullstack_tyler_mlee\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mleel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\tyler\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -32,6 +35,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -66,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
