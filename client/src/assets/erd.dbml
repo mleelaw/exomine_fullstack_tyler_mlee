@@ -5,7 +5,7 @@ active boolean
 coloniesId int [ref: > colonies.id]
 }
 
-table coloniesMinerals {
+table colonyInventory {
 id int [pk]
 coloniesId int [ref: > colonies.id]
 mineralsId int [ref: > minerals.id]
