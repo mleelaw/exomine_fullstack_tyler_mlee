@@ -1,12 +1,57 @@
+using System.Linq.Expressions;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
 
 List<Governor> governors = new List<Governor>
 {
-    new Governor { Id = 1, Name = "Korthis Drell" },
-    new Governor { Id = 2, Name = "Omrin Celarion" },
-    new Governor { Id = 3, Name = "Elaris Vortane" },
-    new Governor { Id = 4, Name = "Xylander Arctron" },
-    new Governor { Id = 5, Name = "Cyran Durnoss" },
+    new Governor
+    {
+        Id = 1,
+        Name = "Korthis Drell",
+        Active = true,
+        Colonyid = 2,
+    },
+    new Governor
+    {
+        Id = 2,
+        Name = "Omrin Celarion",
+        Active = true,
+        Colonyid = 1,
+    },
+    new Governor
+    {
+        Id = 3,
+        Name = "Elaris Vortane",
+        Active = true,
+        Colonyid = 5,
+    },
+    new Governor
+    {
+        Id = 4,
+        Name = "Xylander Arctron",
+        Active = true,
+        Colonyid = 3,
+    },
+    new Governor
+    {
+        Id = 5,
+        Name = "Cyran Durnoss",
+        Active = true,
+        Colonyid = 4,
+    },
 };
 
 List<Facility> facilities = new List<Facility>
@@ -100,18 +145,92 @@ List<FacilityInventory> facilityInventories = new List<FacilityInventory>
     },
 };
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//Endpoint for all governors
+app.MapGet(
+    "/api/governors",
+    () =>
+    {
+        return governors.Select(c => new GovernorDTO
+        {
+            Id = c.Id,
+            Name = c.Name,
+            Active = c.Active,
+            Colonyid = c.Colonyid,
+        });
+    }
+);
 
-var app = builder.Build();
+//Endpoint for governor by id
+app.MapGet(
+    "/api/governors/{id}",
+    (int id) =>
+    {
+        try
+        {
+            Governor foundGovernor = governors.First(g => g.Id == id);
+            return Results.Ok(
+                new GovernorDTO
+                {
+                    Id = foundGovernor.Id,
+                    Name = foundGovernor.Name,
+                    Active = foundGovernor.Active,
+                    Colonyid = foundGovernor.Colonyid,
+                }
+            );
+        }
+        catch
+        {
+            return Results.NotFound();
+        }
+    }
+);
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//Endpoint to get colony by id
+app.MapGet(
+    "/api/colonies/{id}",
+    (int id) =>
+    {
+        try
+        {
+            Colony colony = colonies.First((c) => c.Id == id);
+            return Results.Ok(new ColonyDTO { Id = colony.Id, Name = colony.Name });
+        }
+        catch
+        {
+            return Results.NotFound();
+        }
+    }
+);
 
-app.UseHttpsRedirection();
+app.MapGet(
+    "/api/colonyinventory/{id}",
+    (int id) =>
+    {
+        try
+        {
+            List<ColonyInventory> foundColonyInventory = colonyInventories
+                .Where((ci) => ci.ColonyId == id)
+                .ToList();
+            return Results.Ok(
+                foundColonyInventory.Select(ci =>
+                {
+                    Mineral foundMineral = minerals.First(m => m.Id == ci.Id);
+                    return new ColonyInventoryDTO
+                    {
+                        Id = ci.Id,
+                        ColonyId = ci.ColonyId,
+                        MineralId = ci.MineralId,
+                        Mineral = new MineralDTO { Id = foundMineral.Id, Name = foundMineral.Name },
+                        MineralQuantity = ci.MineralQuantity,
+                    };
+                })
+            );
+        }
+        catch
+        {
+            return Results.NotFound();
+        }
+    }
+);
 
 app.Run();
