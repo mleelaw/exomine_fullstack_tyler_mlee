@@ -1,4 +1,4 @@
-public class ColonyInventoryDTO
+public class ColonyInventory
 {
     public int Id { get; set; }
     public int ColonyId { get; set; }
