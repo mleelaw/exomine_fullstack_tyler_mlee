@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api\\api.csproj": {}
+    "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api\\api.csproj": {
+    "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api\\api.csproj",
+        "projectUniqueName": "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api\\api.csproj",
+        "projectPath": "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api.csproj",
         "packagesPath": "C:\\Users\\mleel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\api\\obj\\",
+        "outputPath": "C:\\Users\\mleel\\NSS\\exomine_fullstack_tyler_mlee\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mleel\\AppData\\Roaming\\NuGet\\NuGet.Config"
