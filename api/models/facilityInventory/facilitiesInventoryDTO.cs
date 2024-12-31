@@ -4,6 +4,6 @@ public class FacilityInventoryDTO
     public int FacilityId { get; set; }
     public FacilityDTO Facility { get; set; }
     public int MineralId { get; set; }
-    public MineralDTO Minerals { get; set; }
+    public MineralDTO Mineral { get; set; }
     public int MineralQuantity { get; set; }
 }
