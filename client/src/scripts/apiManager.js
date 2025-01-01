@@ -21,3 +21,15 @@ export const getColonyInventoryByColonyId = async (id) => {
   const res = await fetch(`/api/colonyinventory/${id}`);
   return res.json();
 };
+
+//gets all Facilities
+export const getFacilities = async () => {
+  const res = await fetch("/api/facilities");
+  return res.json();
+};
+
+//gets Facility Inventory
+export const getFacilityInventory = async () => {
+  const res = await fetch("/api/facilityInventories");
+  return res.json();
+};

@@ -125,7 +125,7 @@ List<FacilityInventory> facilityInventories = new List<FacilityInventory>
     new FacilityInventory
     {
         Id = 2,
-        FacilityId = 2,
+        FacilityId = 3,
         MineralId = 5,
         MineralQuantity = 5000,
     },
@@ -143,6 +143,13 @@ List<FacilityInventory> facilityInventories = new List<FacilityInventory>
         MineralId = 2,
         MineralQuantity = 6700,
     },
+    new FacilityInventory
+    {
+        Id = 5,
+        FacilityId = 2,
+        MineralId = 3,
+        MineralQuantity = 6600,
+    },
 };
 
 //Endpoint for all governors
@@ -157,6 +164,40 @@ app.MapGet(
             Active = c.Active,
             Colonyid = c.Colonyid,
         });
+    }
+);
+
+//Endpoint for all Facilities
+app.MapGet(
+    "/api/facilities",
+    () =>
+    {
+        var facilityList = facilities.Select(f => new FacilityDTO { Id = f.Id, Name = f.Name });
+        return facilityList;
+    }
+);
+
+//Endpoint for all Facility Mineral
+app.MapGet(
+    "/api/facilityInventories",
+    () =>
+    {
+        var facilityInventoryList = facilityInventories.Select(i => new FacilityInventoryDTO
+        {
+            Id = i.Id,
+            FacilityId = i.FacilityId,
+            Facility = facilities
+                .Where(f => f.Id == i.FacilityId)
+                .Select(f => new FacilityDTO { Id = f.Id, Name = f.Name })
+                .FirstOrDefault(),
+            MineralId = i.MineralId,
+            Mineral = minerals
+                .Where(m => m.Id == i.MineralId)
+                .Select(m => new MineralDTO { Id = m.Id, Name = m.Name })
+                .FirstOrDefault(),
+            MineralQuantity = i.MineralQuantity,
+        });
+        return facilityInventoryList;
     }
 );
 
