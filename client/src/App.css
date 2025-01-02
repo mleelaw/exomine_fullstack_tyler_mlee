@@ -1,11 +1,147 @@
-.big-three{
-    display: flex;
-    justify-content: space-evenly;
+.big-three {
+    display: grid;
+    grid-template-areas: 
+      "governor colony"
+      "facility inventory"
+      "cart     cart"; /* Make cart span both columns */
     gap: 30px;
+    padding: 30px;
     width: 100%;
-    flex-wrap: wrap;
-    column-gap: 30px;
+    min-height: 90vh;
+    position: relative;
+    z-index: 1;
+    grid-template-columns: repeat(2, minmax(auto, 600px));
+    grid-template-rows: repeat(3, auto);
+    align-items: start;
+    justify-content: center;
 }
-.governor-card{
-height: 300px
+
+/* Common card styles */
+.card {
+    display: flex;
+    border: 3px solid #25da2b;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 500px;
+    border-radius: 0;
+    font-family: "Orbitron", serif;
+    color: #f11684;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+/* Common card body styles */
+.card-body {
+    display: flex;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* Common title styles */
+.card-title {
+    font-size: 35px;
+    text-decoration: underline;
+}
+
+/* Common selection styles */
+.selection-base {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    border: 0;
+    color: #f11684;
+    overflow-y: auto;
+    text-align: center;
+    justify-content: space-evenly;
+    font-size: 25px;
+    -webkit-appearance: listbox;
+}
+
+.selection-base option {
+    margin: 10px;
+}
+
+.selection-base option:hover,
+.selection-base option:focus,
+.selection-base option:active,
+.selection-base option:checked {
+    background-color: #217524 !important;
+    color: white;
+    box-shadow: none;
+    -webkit-appearance: none;
+}
+
+.selection-base option::-moz-selection {
+    background-color: #217524;
+    color: white;
+}
+
+.selection-base option:selected {
+    background-color: #217524 !important;
+    color: white;
+}
+
+/* Scrollbar styles */
+.selection-base::-webkit-scrollbar-track {
+    background-color: #3b6d0c;
+}
+
+.selection-base::-webkit-scrollbar-thumb {
+    background-color: #4b0649;
+}
+
+.selection-base::selection {
+    background-color: #3b6d0c;
+    color: white;
+}
+
+/* Common button styles */
+.mineral-button {
+    background-color: #217524;
+    border: none;
+}
+
+/* Mineral line styles */
+.minerals-line {
+    font-size: 25px;
+}
+
+/* Card positioning in grid */
+.governor-card {
+    grid-area: governor;
+    justify-self: center;
+}
+
+.colony-card {
+    grid-area: colony;
+    justify-self: center;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.facility-card {
+    grid-area: facility;
+    justify-self: center;
+}
+
+.facility-minerals {
+    grid-area: inventory;
+    justify-self: center;
+}
+
+.space-cart {
+    grid-area: cart;
+    justify-self: center; /* Align with inventory above it */
+}
+
+/* App container */
+.App {
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 }

@@ -18,7 +18,12 @@ export const getColonyById = async (id) => {
 
 //get all colonyInventories by ColonyId
 export const getColonyInventoryByColonyId = async (id) => {
+  if (!id) return []; // Return empty array if no id
+  
   const res = await fetch(`/api/colonyinventory/${id}`);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch colony inventory: ${res.status}`);
+  }
   return res.json();
 };
 
@@ -32,4 +37,26 @@ export const getFacilities = async () => {
 export const getFacilityInventory = async () => {
   const res = await fetch("/api/facilityInventories");
   return res.json();
+};
+//post for adding mineral
+export const purchaseMineral = async (facilityId, mineralId, colonyId, quantity) => {
+  const res = await fetch("/api/purchase", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      facilityId,
+      mineralId,
+      colonyId,
+      quantity
+    }),
+  });
+  
+  if (!res.ok) {
+    const error = await res.text();
+    throw new Error(error || "Purchase failed");
+  }
+  
+  return res.ok;
 };

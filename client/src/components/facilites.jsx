@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getFacilities } from "../scripts/apiManager";
 import { FacilityInventory } from "./facilityInventory";
-import "./facilities.css"
 
 export function Facilities({ onMineralSelect, selectedFacilityId, setSelectedFacilityId, setSelectedFacilityName,selectedFacilityName }) {
     const [facilities, setFacilities] = useState([]);
@@ -20,10 +19,10 @@ export function Facilities({ onMineralSelect, selectedFacilityId, setSelectedFac
 
     return (
         <div className="card facility-card">
-            <div className="card-body facility-body">
-                <h4 className="card-title facility-title">Facility Selection</h4>
+            <div className="card-body">
+                <h4 className="card-title">Facility Selection</h4>
                 <select
-                    className="form-select facility-selection"
+                    className="selection-base facility-selection"
                     multiple
                     value={selectedFacilityId}
                     onChange={handleFacilityChange}

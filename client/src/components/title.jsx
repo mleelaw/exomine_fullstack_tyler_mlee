@@ -1,5 +1,11 @@
 import "./title.css"
+import { FaRocket } from "react-icons/fa"; 
 
 export const Title = () => {
-    return(<h4 className="exomine-title">Exomine</h4>)
+    return(
+        <div className="title-container">
+            <h4 className="exomine-title">Exomine</h4>
+            <FaRocket className="rocket-icon" />
+        </div>
+    )
 }

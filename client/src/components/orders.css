@@ -1,0 +1,22 @@
+.order-card {
+    justify-content: space-evenly;
+  }
+  
+  .order-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+  .order-min-button {
+    background-color: #217524;
+    border: none;
+  }
+  
+  .order-title {
+    font-size: 35px;
+  }
+
+  .order-data {
+    font-size: 25px;
+  }
