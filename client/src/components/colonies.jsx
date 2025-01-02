@@ -3,6 +3,7 @@ import {
   getColonyById,
   getColonyInventoryByColonyId,
 } from "../scripts/apiManager";
+import "./colonies.css"
 
 export const Colonies = ({ selectedGovernor }) => {
   const [colony, setColony] = useState([]);
@@ -18,8 +19,8 @@ export const Colonies = ({ selectedGovernor }) => {
   }, [selectedGovernor]);
   return (
   
-      <div className="card">
-      <h6 className="card-title"> Colony {colony.name} Minerals</h6>
+      <div className="card colony-card">
+      <h6 className="card-title colony-title"> Colony {colony.name} Minerals</h6>
       {colonyInventories.map((ci) => {
         return (
           <div key={ci.id} className="colonyMineralsLine">

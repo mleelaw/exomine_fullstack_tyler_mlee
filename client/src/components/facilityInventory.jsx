@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getFacilityInventory } from "../scripts/apiManager";
+import "./facilityInventory.css"
 
 export function FacilityInventory({ selectedFacilityId, selectedFacilityName, onMineralSelect }) {
     const [inventory, setInventory] = useState([]);
@@ -20,15 +21,15 @@ export function FacilityInventory({ selectedFacilityId, selectedFacilityName, on
     };
 
     return (
-        <div className="card">
-            <div className="card-body">
-                <h6 className="card-title">Available Mineral Inventory for {selectedFacilityName}</h6>
+        <div className="card facility-minerals">
+            <div className="card-body facility-min-body">
+                <h6 className="card-title facility-min-title">Available Mineral Inventory for {selectedFacilityName}</h6>
                 {selectedFacilityId && (
                     <div>
                         {facilityInventory.map((item) => (
                             <button 
                                 key={item.id}
-                                className="btn btn-secondary m-1"
+                                className="btn btn-secondary m-1 facility-min-button"
                                 onClick={() => handleMineralClick(item)}
                             >
                                 {item.mineral?.name}: {item.mineralQuantity}

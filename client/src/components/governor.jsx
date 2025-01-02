@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { getGovernors } from "../scripts/apiManager"
+import "./governor.css"
 
 export const Governor = ({setSelectedGovernor}) => {
     const [governors, setGovernors] = useState([])
@@ -16,15 +17,14 @@ export const Governor = ({setSelectedGovernor}) => {
     }, [])
 
     return (
-        <div className="card">
-            <div className="card-body">
-                <h4 className="card-title">Governor Selection</h4>
+        <div className="card governor-card">
+            <div className="card-body governor-card-body">
+                <h4 className="card-title governor-title">Governor Selection</h4>
                 <select 
-                    className="form-select" 
+                    className="form-select governor-selection" 
                     multiple 
                     onChange={changeActiveGovernor}
                 >
-                    <option value="" disabled>Select a Governor</option>
                     {governors.map(g => (
                         <option key={g.id} value={g.id}>
                             {g.name}

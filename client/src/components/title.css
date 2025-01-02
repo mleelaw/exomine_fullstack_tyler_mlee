@@ -1,0 +1,9 @@
+.exomine-title{
+    display:flex;
+    justify-content: center;
+    font-family: "Orbitron", serif;
+    font-size: 100px;
+    letter-spacing: 50px;
+    margin: 20px;
+    color: #3b6d0c
+}

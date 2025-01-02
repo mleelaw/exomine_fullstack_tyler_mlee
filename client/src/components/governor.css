@@ -1,0 +1,58 @@
+.governor-card{
+    display: flex;
+    border: 3px solid #3b6d0c;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 30rem;
+    border-radius: 0;
+    font-family: "Orbitron", serif;
+    color: #4b0649;
+    justify-content: space-evenly;
+    padding: 10px;
+
+}
+
+.governor-card-body{
+    display: flex;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+    
+}
+.governor-selection{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    border: 0;
+    color: #4b0649;
+    overflow-y: auto;
+    text-align: center;
+    justify-content: space-evenly;
+    font-size: 25px;
+}
+.governor-title{
+    font-size: 35px;
+}
+.governor-selection option {
+    margin: 10px;
+}
+
+.governor-selection::-webkit-scrollbar-track{
+ background-color: #3b6d0c;
+}
+
+.governor-selection::-webkit-scrollbar-thumb {
+    background-color: #4b0649
+}
+.governor-selection option:checked {
+    background-color: #3b6d0c;
+    color: white; /* Optional: change the text color */
+  }
+  .governor-selection::selection {
+    background-color: #3b6d0c; 
+    color: white;
+  }

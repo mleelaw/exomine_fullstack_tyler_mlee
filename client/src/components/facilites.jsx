@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { getFacilities } from "../scripts/apiManager";
 import { FacilityInventory } from "./facilityInventory";
+import "./facilities.css"
 
-export function Facilities({ onMineralSelect }) {
+export function Facilities({ onMineralSelect, selectedFacilityId, setSelectedFacilityId, setSelectedFacilityName,selectedFacilityName }) {
     const [facilities, setFacilities] = useState([]);
-    const [selectedFacilityId, setSelectedFacilityId] = useState([]);  
-    const [selectedFacilityName, setSelectedFacilityName] = useState("");
+
 
     useEffect(() => {
         getFacilities().then((data) => setFacilities(data));
@@ -19,16 +19,15 @@ export function Facilities({ onMineralSelect }) {
     };
 
     return (
-        <div className="card">
-            <div className="card-body">
-                <h4 className="card-title">Facility Selection</h4>
+        <div className="card facility-card">
+            <div className="card-body facility-body">
+                <h4 className="card-title facility-title">Facility Selection</h4>
                 <select
-                    className="form-select"
+                    className="form-select facility-selection"
                     multiple
                     value={selectedFacilityId}
                     onChange={handleFacilityChange}
                 >
-                    <option value="" disabled>Select a facility</option>
                     {facilities.map((f) => (
                         <option key={f.id} value={f.id}>
                             {f.name}
@@ -36,11 +35,6 @@ export function Facilities({ onMineralSelect }) {
                     ))}
                 </select>
             </div>
-            <FacilityInventory 
-                selectedFacilityId={selectedFacilityId[0]} 
-                selectedFacilityName={selectedFacilityName}
-                onMineralSelect={onMineralSelect}
-            />
         </div>
     );
 }
