@@ -255,7 +255,7 @@ app.MapGet(
             return Results.Ok(
                 foundColonyInventory.Select(ci =>
                 {
-                    Mineral foundMineral = minerals.First(m => m.Id == ci.Id);
+                    Mineral foundMineral = minerals.First(m => m.Id == ci.MineralId);
                     return new ColonyInventoryDTO
                     {
                         Id = ci.Id,
@@ -273,5 +273,62 @@ app.MapGet(
         }
     }
 );
+app.MapPost(
+    "/api/purchase",
+    (PurchaseDTO purchase) =>
+    {
+        try
+        {
+            // Log the incoming purchase request
+            Console.WriteLine(
+                $"Purchase request: Facility {purchase.FacilityId}, Mineral {purchase.MineralId}, Colony {purchase.ColonyId}"
+            );
 
+            var facilityInventory = facilityInventories.FirstOrDefault(fi =>
+                fi.FacilityId == purchase.FacilityId && fi.MineralId == purchase.MineralId
+            );
+
+            if (facilityInventory == null)
+            {
+                return Results.BadRequest("Facility inventory not found");
+            }
+
+            var colonyInventory = colonyInventories.FirstOrDefault(ci =>
+                ci.ColonyId == purchase.ColonyId && ci.MineralId == purchase.MineralId
+            );
+
+            if (facilityInventory.MineralQuantity < purchase.Quantity)
+            {
+                return Results.BadRequest(
+                    $"Insufficient inventory. Available: {facilityInventory.MineralQuantity}"
+                );
+            }
+
+            facilityInventory.MineralQuantity -= purchase.Quantity;
+
+            if (colonyInventory == null)
+            {
+                colonyInventory = new ColonyInventory
+                {
+                    Id = colonyInventories.Max(ci => ci.Id) + 1,
+                    ColonyId = purchase.ColonyId,
+                    MineralId = purchase.MineralId,
+                    MineralQuantity = purchase.Quantity,
+                };
+                colonyInventories.Add(colonyInventory);
+            }
+            else
+            {
+                colonyInventory.MineralQuantity += purchase.Quantity;
+            }
+
+            return Results.Ok(new { message = "Purchase successful" });
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Purchase error: {ex.Message}");
+            return Results.BadRequest($"Purchase failed: {ex.Message}");
+        }
+    }
+);
 app.Run();
