@@ -16,22 +16,22 @@ export const Governor = ({setSelectedGovernor}) => {
         })
     }, [])
 
-    return (
-        <div className="card governor-card">
-            <div className="card-body governor-card-body">
-                <h4 className="card-title governor-title">Governor Selection</h4>
-                <select 
-                    className="form-select governor-selection" 
-                    multiple 
-                    onChange={changeActiveGovernor}
-                >
-                    {governors.map(g => (
-                        <option key={g.id} value={g.id}>
-                            {g.name}
-                        </option>
-                    ))}
-                </select>
+        return (
+            <div className="card governor-card">
+                <div className="card-body">
+                    <h4 className="card-title">Governor Selection</h4>
+                    <select 
+                        className="selection-base governor-selection" 
+                        multiple 
+                        onChange={changeActiveGovernor}
+                    >
+                        {governors.map(g => (
+                            <option key={g.id} value={g.id}>
+                                {g.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
-        </div>
-    );
+        );
 }

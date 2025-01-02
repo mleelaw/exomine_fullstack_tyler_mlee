@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { getFacilityInventory } from "../scripts/apiManager";
-import "./facilityInventory.css"
 
 export function FacilityInventory({ selectedFacilityId, selectedFacilityName, onMineralSelect }) {
     const [inventory, setInventory] = useState([]);
 
     useEffect(() => {
-        getFacilityInventory().then((inv) => setInventory(inv));
-    }, []);
+        if (selectedFacilityId) {
+          getFacilityInventory().then((inv) => setInventory(inv));
+        }
+      }, [selectedFacilityId]);
 
     const facilityInventory = inventory.filter(
         (item) => item.facilityId === selectedFacilityId
@@ -29,7 +30,7 @@ export function FacilityInventory({ selectedFacilityId, selectedFacilityName, on
                         {facilityInventory.map((item) => (
                             <button 
                                 key={item.id}
-                                className="btn btn-secondary m-1 facility-min-button"
+                                className="btn btn-secondary m-1 mineral-button"
                                 onClick={() => handleMineralClick(item)}
                             >
                                 {item.mineral?.name}: {item.mineralQuantity}
