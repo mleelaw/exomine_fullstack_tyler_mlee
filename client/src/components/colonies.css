@@ -1,0 +1,20 @@
+.colony-card{
+    display: flex;
+    border: 3px solid #3b6d0c;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 30rem;
+    border-radius: 0;
+    font-family: "Orbitron", serif;
+    color: #4b0649;
+    text-align: center;
+    padding: 10px;
+    overflow-y: auto;
+    
+
+}
+.colony-title{
+    font-size: 35px;
+}
+.colonyMineralsLine{
+    font-size: 25px;
+}
