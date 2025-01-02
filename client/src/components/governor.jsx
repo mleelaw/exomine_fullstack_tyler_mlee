@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getGovernors } from "../scripts/apiManager"
-import "./governor.css"
+import "./css/governor.css"
 
 export const Governor = ({setSelectedGovernor}) => {
     const [governors, setGovernors] = useState([])

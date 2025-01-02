@@ -1,4 +1,4 @@
-import "./backgroundVideo.css"
+import "./css/backgroundVideo.css"
 
 
 export const BackgroundVideo = () => {

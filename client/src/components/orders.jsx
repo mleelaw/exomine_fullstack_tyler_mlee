@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { purchaseMineral } from "../scripts/apiManager";
-import "./orders.css"
+import "./css/orders.css"
 
 export function SpaceCart({ selectedMineral, selectedGovernor, selectedFacilityId, onPurchaseComplete }) {
     const [error, setError] = useState(null);

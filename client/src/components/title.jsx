@@ -1,4 +1,4 @@
-import "./title.css"
+import "./css/title.css"
 import { FaRocket } from "react-icons/fa"; 
 
 export const Title = () => {

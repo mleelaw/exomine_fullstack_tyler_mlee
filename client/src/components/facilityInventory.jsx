@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { getFacilityInventory } from "../scripts/apiManager";
 
-export function FacilityInventory({ selectedFacilityId, selectedFacilityName, onMineralSelect }) {
+export function FacilityInventory({ selectedFacilityId, selectedFacilityName, onMineralSelect, refreshTrigger}) {
     const [inventory, setInventory] = useState([]);
 
     useEffect(() => {
         if (selectedFacilityId) {
           getFacilityInventory().then((inv) => setInventory(inv));
         }
-      }, [selectedFacilityId]);
+      }, [selectedFacilityId, refreshTrigger]);
 
     const facilityInventory = inventory.filter(
         (item) => item.facilityId === selectedFacilityId
