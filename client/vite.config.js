@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/exomine_fullstack_tyler_mlee/client/",
+  base: "/exomine_fullstack_tyler_mlee/",
   server: {
     port: 5173,
     proxy: {
